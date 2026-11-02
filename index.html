@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Klok</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    #date {
+      font-size: 8rem;
+      margin-bottom: 10px;
+    }
+
+    #time {
+      font-size: 10rem;
+      font-weight: bold;
+    }
+
+    #logo {
+      margin-top: 20px;
+      width: 200px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px; /* maakt het iets mooier */
+    }
+  </style>
+</head>
+<body>
+
+  <div id="date"></div>
+  <div id="time"></div>
+
+  <img id="logo" src="file:///C:/Users/117578/OneDrive - Altena College/Apps/logo-altena-college-sleeuwijk.svg" alt="Logo">
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+
+      const time = now.toLocaleTimeString('nl-NL', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+
+      const date = now.toLocaleDateString('nl-NL', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+
+      document.getElementById('time').textContent = time;
+      document.getElementById('date').textContent = date;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
+</body>
+</html>
